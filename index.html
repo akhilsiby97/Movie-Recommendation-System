@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+ <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+ <link type="text/css" rel="stylesheet" 
+ href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+        
+ <title>MOVIE RECOMMENDATION SYSTEM</title>
+ <script src="{{ url_for('static', filename='script.js') }}"></script>
+ <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<style>
+        .anybutton {
+        top:9%;
+        left:85%;
+        width:140px;
+        height:40px;
+        position: absolute;
+        z-index: 2; 
+        }
+   body {
+    background-image: url('static/images/movie.jpg');
+}
+</style>    
+</head>
+<body>
+<h1 style="color: red;">MOVIE RECOMMENDATION SYSTEM</h1>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="false">Sign out</button>
+ 
+
+<div id="login-info" hidden="true">
+        <form action="/movie_search" method="post">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="flex: 1;">
+                    <label for="movie1" style="color: blue;font-size: 24px;">SEARCH MOVIE HERE:</label>
+                    <input type="text" id="Search_movie" name="Search_movie" />
+                </div>
+            </div>
+            <input type="submit" name="button" />
+    </form>
+
+    <h1 style="color:red;">Recommended Movies:</h1>
+        {% if recommended_movies %}
+    <ul>
+        {% for movie in recommended_movies %}
+            <li style="color: yellow;">{{ movie }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    </ul>
+
+    <form action="/rate_movie" method="post">
+        <input type="submit" value= 'RATE_MOVIE' class="anybutton" name="submit" />
+    </form>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</html>

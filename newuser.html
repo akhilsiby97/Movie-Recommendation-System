@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <ink type="text/css" rel="stylesheet" href="{{ url_for('static',
+            filename='style.css') }}">
+        <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet"
+            href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+        <title>
+            NEW USER
+        </title>
+
+        <style>
+            .anybutton {
+            top:9%;
+            left:85%;
+            width:140px;
+            height:40px;
+            position: absolute;
+            z-index: 2; 
+            }
+        body {
+    background-image: url('static/images/movie.jpg');
+}
+    </style> 
+</head>
+
+
+<body>
+    <h1 style="color: red;">RATE LAST 3 MOVIES YOU WATCHED</h1>
+
+    <div id="firebase-auth-container"></div>
+    <button id="sign-out" hidden="true">Sign out</button>
+    <div id="login-info" hidden="true">
+        <form action="/new_user" method="post">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="flex: 1;">
+                    <label for="movie1" style="color: blue;font-size: 24px;">Movie 1:</label>
+                    <input type="text" id="movie" name="movie" />
+                </div>
+                <div style="flex: 1;">
+                    <label for="rating1" style="color: blue;font-size: 24px;">Rating :</label>
+                    <input type="text" id="rating" name="rating" />
+                </div>
+                <div style="flex: 1;">
+                    <label for="genre1" style="color: blue;font-size: 24px;">Genre:</label>
+                    <input type="text" id="genre1" name="genre1" />
+                </div>
+            </div>
+        
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="flex: 1;">
+                    <label for="movie2" style="color: blue;font-size: 24px;">Movie 2:</label>
+                    <input type="text" id="movie2" name="movie2" />
+                </div>
+                <div style="flex: 1;">
+                    <label for="rating2" style="color: blue;font-size: 24px;">Rating:</label>
+                    <input type="text" id="rating2" name="rating2" />
+                </div>
+                <div style="flex: 1;">
+                    <label for="genre2" style="color: blue;font-size: 24px;">Genre:</label>
+                    <input type="text" id="genre2" name="genre2" />
+                </div>
+            </div>
+        
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <div style="flex: 1;">
+                    <label for="movie3" style="color: blue;font-size: 24px;">Movie 3:</label>
+                    <input type="text" id="movie3" name="movie3" />
+                </div>
+                <div style="flex: 1;">
+                    <label for="rating3" style="color: blue;font-size: 24px;">Rating:</label>
+                    <input type="text" id="rating3" name="rating3" />
+                </div>
+                <div style="flex: 1;">
+                    <label for="genre3" style="color: blue;font-size: 24px;">Genre:</label>
+                    <input type="text" id="genre3" name="genre3" />
+                </div>
+            </div>
+        
+            <input type="submit" name="button" />
+        </form>
+        {% if error_message %}
+        <p>Error Message: {{ error_message }}</p>
+        {% endif %}
+    </div>
+
+
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+
+</html>
